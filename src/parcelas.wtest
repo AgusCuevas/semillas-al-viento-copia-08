@@ -4,7 +4,9 @@ import plantas.*
 
 describe "parcelas"{
 
-const parcela1 = new Parcela(ancho = 20, largo = 1, cuantasHorasDeSolRecibe = 10)
+const parcelaEcologica = new ParcelaEcologica(ancho = 20, largo = 1, cuantasHorasDeSolRecibe = 10)
+const parcelaIndustrial = new ParcelaIndustrial(ancho = 20, largo = 1, cuantasHorasDeSolRecibe = 10)	
+	
 	
 const soja1 = new Soja(anioDeObtencion = 2009, altura = 1.2)
 const soja2 = new Soja(anioDeObtencion = 2009, altura = 1.3)
@@ -13,19 +15,24 @@ const soja4 = new Soja(anioDeObtencion = 2009, altura = 1.5)
 const soja5 = new Soja(anioDeObtencion = 2009, altura = 1.5)
 	
 fixture{
-	parcela1.plantarUnaPlanta(soja1)
-	parcela1.plantarUnaPlanta(soja2)
-	parcela1.plantarUnaPlanta(soja3)
-	parcela1.plantarUnaPlanta(soja4)
+	parcelaEcologica.plantarUnaPlanta(soja1)
+	parcelaEcologica.plantarUnaPlanta(soja2)
+	parcelaEcologica.plantarUnaPlanta(soja3)
+	parcelaEcologica.plantarUnaPlanta(soja4)
+	
+	parcelaIndustrial.plantarUnaPlanta(soja1)
+	parcelaIndustrial.plantarUnaPlanta(soja2)
+	parcelaIndustrial.plantarUnaPlanta(soja3)
+	parcelaIndustrial.plantarUnaPlanta(soja4)
 }	
-	test "parcela"{
-		assert.equals(20, parcela1.superficie())
-		assert.equals(4, parcela1.cantidadMaximaDePlantas())
+	test "parcelaEcologia"{
+		assert.equals(20, parcelaEcologica.superficie())
+		assert.equals(4, parcelaEcologica.cantidadMaximaDePlantas())
 	}	
 	
-	test "parcela1"{
-		assert.equals(20, parcela1.superficie())
-		assert.equals(4, parcela1.cantidadMaximaDePlantas())
-		parcela1.plantarUnaPlanta(soja5) // Aca da el error, ya que, supera la cantidad maxima
+	test "parcelaEcologicaConError"{
+		assert.equals(20, parcelaEcologica.superficie())
+		assert.equals(4, parcelaEcologica.cantidadMaximaDePlantas())
+		parcelaEcologica.plantarUnaPlanta(soja5) // Aca da el error, ya que, supera la cantidad maxima
 	}	
 }

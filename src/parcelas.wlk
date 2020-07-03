@@ -25,13 +25,13 @@ class Parcela {
 		return plantas.size() == self.cantidadMaximaDePlantas()
 	}
 	
-	method plantaPuedeEstaEnParcela(planta){
+	method plantaPuedeEstarEnParcela(planta){
 		return  (cuantasHorasDeSolRecibe - planta.horasDeSolTolera()) < 2
 	}
 	
 	method plantarUnaPlanta(planta){
-		if (self.estaLlenoDePlantas() or not self.plantaPuedeEstaEnParcela(planta)){
-			self.error("No se puede planta")
+		if (self.estaLlenoDePlantas() or not self.plantaPuedeEstarEnParcela(planta)){
+			self.error("No se puede plantar")
 		}
 		else { plantas.add(planta) }
 	}
@@ -39,7 +39,7 @@ class Parcela {
 	method seAsociaBien(planta)
 	
 	method cantidadDePlantasAsociadas(){
-		return plantas.count({ planta => planta.seAsociaBien(planta)})
+		return plantas.count({ planta => self.seAsociaBien(planta)})
 	}
 }
 

@@ -1,0 +1,40 @@
+import plantas.*
+import inta.*
+import parcelas.*
+
+describe "INTA"{
+	const menta1 = new Menta(anioDeObtencion = 2009, altura = 1)
+	const menta2 = new Menta(anioDeObtencion = 2009, altura = 0.3)
+	
+	const soja1 = new Soja(anioDeObtencion = 2009, altura = 1.2)
+	const soja2 = new Soja(anioDeObtencion = 2009, altura = 1.3)
+	const soja3 = new Soja(anioDeObtencion = 2009, altura = 1.4)
+	const soja4 = new Soja(anioDeObtencion = 2009, altura = 1.5)
+	const soja5 = new Soja(anioDeObtencion = 2009, altura = 1.5)
+	
+	const quinoa1 = new Quinoa(anioDeObtencion = 2010, altura = 0.6, espacio = 0.2)
+	const quinoa2 = new Quinoa(anioDeObtencion = 2006, altura = 0.6, espacio = 0.9)
+	
+	const parcelaEcologica = new ParcelaEcologica(ancho = 20, largo = 1, cuantasHorasDeSolRecibe = 10)
+	const parcelaIndustrial = new ParcelaIndustrial(ancho = 20, largo = 1, cuantasHorasDeSolRecibe = 10)
+	
+	fixture {
+		inta.parcelas([parcelaEcologica, parcelaIndustrial])
+		
+		parcelaEcologica.plantarUnaPlanta(soja1)
+		parcelaEcologica.plantarUnaPlanta(soja2)
+		parcelaEcologica.plantarUnaPlanta(soja3)
+		parcelaEcologica.plantarUnaPlanta(soja4)
+	
+		parcelaIndustrial.plantarUnaPlanta(soja1)
+		parcelaIndustrial.plantarUnaPlanta(soja2)
+		parcelaIndustrial.plantarUnaPlanta(soja3)
+		
+	}
+	
+	test "INTA" {
+
+	assert.equals(3.5, inta.promedioDePlantas())
+	assert.equals([], inta.parcelaMasSustentable()) // error porque no hay parcelas con mas de 4 plantas
+	}
+}

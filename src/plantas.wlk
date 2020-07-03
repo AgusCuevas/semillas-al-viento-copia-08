@@ -23,8 +23,10 @@ class Plantas {
 
 class Menta inherits Plantas{
 	
-	override method horasDeSolTolera(horas){
-		return horas
+	 var property  horasDeSolTolera = horaDeSolGenerico.cantidad()
+	
+	override method horasDeSolTolera(){
+		return horasDeSolTolera
 	}
 	
 	override method daNuevasSemillas(){
